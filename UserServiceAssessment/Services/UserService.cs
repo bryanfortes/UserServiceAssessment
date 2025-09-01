@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using UserServiceAssessment.Data;
 using UserServiceAssessment.Data.Interfaces;
 using UserServiceAssessment.Helpers.Exceptions;
 using UserServiceAssessment.Models.User;
