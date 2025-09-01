@@ -26,12 +26,15 @@ namespace UserServiceAssessment.Data
 
         public bool UpdateUserEmailById(int userId, string newEmail)
         {
-            if (_users.TryGetValue(userId, out UserModel? user))
-            {
-                user.Email = newEmail;
-                return true;
-            }
-            return false;
+            return _users.TryGetValue(userId, out UserModel? existingUser) &&
+                   _users.TryUpdate(userId,
+                       new UserModel
+                       {
+                           Id = existingUser.Id,
+                           Name = existingUser.Name,
+                           Email = newEmail
+                       },
+                       existingUser);
         }
 
         public List<UserModel> GetAllUsers() => _users.Values.ToList();
